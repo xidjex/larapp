@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNotesTable extends Migration
+class CreateApartmentOwnerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notes', function(Blueprint $table) {
-            $table->text('note');
+        Schema::create('apartment_owner', function(Blueprint $table) {
             $table->integer('apartment_id');
-            $table->timestamps();
+            $table->integer('owner_id');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notes');
+        Schema::dropIfExists('apartment_owner');
     }
 }
