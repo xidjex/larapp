@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ApartmentController@index')->name('index');
+Route::get('/apartment/{id}', 'ApartmentController@show')->name('show');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

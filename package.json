@@ -19,7 +19,7 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7",
-        "vue-material": "1.0.0-beta-10.2",
+        "bootstrap-material-design": "4.1.1",
         "vue-resource": "1.5.1"
     }
 }
