@@ -20165,3 +20165,15 @@ h6 {
   }
 }
 
+.dropdown-menu .dropdown-item {
+  max-width: none !important;
+}
+
+.input-group-text {
+  padding-right: 10px !important;
+}
+
+.list-group-item :first-child {
+  margin: 0 !important;
+}
+

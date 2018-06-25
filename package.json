@@ -21,5 +21,7 @@
         "vue": "^2.5.7",
         "bootstrap-material-design": "4.1.1",
         "vue-resource": "1.5.1"
+    },
+    "dependencies": {
     }
 }

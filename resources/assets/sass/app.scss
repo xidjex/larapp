@@ -8,3 +8,15 @@
 // Bootstrap
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/bootstrap-material-design/scss/bootstrap-material-design";
+
+.dropdown-menu .dropdown-item {
+    max-width: none !important;
+}
+
+.input-group-text {
+    padding-right: 10px !important;
+}
+
+.list-group-item :first-child {
+    margin: 0 !important;
+}
