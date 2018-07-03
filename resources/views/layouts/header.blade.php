@@ -8,13 +8,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Все</a>
+        <a class="nav-link" href="/">Все</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Сданы</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Смонтированые</a>
+        <a class="nav-link active" href="#">Смонтированые</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Не завершенные</a>

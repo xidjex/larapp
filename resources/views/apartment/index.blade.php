@@ -84,12 +84,12 @@
 </table> -->
 <!-- Content -->
 
-<button type="button" class="btn btn-primary bmd-btn-fab position-fixed" data-toggle="modal" data-target="#exampleModalCenter" style="right: 20px; bottom: 20px;">
+<!-- <button type="button" class="btn btn-primary bmd-btn-fab position-fixed" data-toggle="modal" data-target="#exampleModalCenter" style="right: 20px; bottom: 20px;">
   <i class="material-icons">add</i>
-</button>
+</button> -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -165,6 +165,8 @@
       </div>
     </div>
   </div>
-</div>
-<apartments-list :list="list">
+</div> -->
+<apartments-list :list="list" @details='showDetails'></apartments-list>
+<add-apartment-modal @store="_loadList()"></add-apartment-modal>
+<apartment-details-modal v-if="selectedIndex != null" :index="selectedIndex" @close="selectedIndex = null" @update="_loadList()"></apartment-details-modal>
 @endsection

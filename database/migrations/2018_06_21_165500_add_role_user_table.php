@@ -14,7 +14,7 @@ class AddRoleUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->char('role', 5);
+            $table->char('role', 5)->default(5);
         });
     }
 

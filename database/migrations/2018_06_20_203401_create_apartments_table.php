@@ -17,9 +17,12 @@ class CreateApartmentsTable extends Migration
             $table->increments('id');
             $table->integer('number');
             $table->integer('floor');
-            $table->integer('status')->index();
-            $table->integer('user_id');
-            $table->timestamp('created_at')->nullable();
+            $table->integer('entrance');
+            $table->text('kit')->nullable();
+            $table->integer('status')->index()->default(0);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
             $table->timestamp('mount_at')->nullable();
             $table->timestamp('done_at')->nullable();
         });

@@ -14,7 +14,9 @@ class CreateNotesTable extends Migration
     public function up()
     {
         Schema::create('notes', function(Blueprint $table) {
+            $table->increments('id');
             $table->text('note');
+            $table->integer('user_id');
             $table->integer('apartment_id');
             $table->timestamps();
         });

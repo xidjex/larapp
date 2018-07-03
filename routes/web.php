@@ -12,6 +12,11 @@
 */
 
 Route::get('/', 'ApartmentController@index')->name('index');
+Route::post('/apartment', 'ApartmentController@store');
+Route::get('/apartment/list/', 'ApartmentController@list')->name('list');
+Route::post('/apartment/note', 'ApartmentController@storeNote');
+Route::post('/apartment/owner', 'ApartmentController@storeOwner');
+Route::delete('/apartment/{id}', 'ApartmentController@delete');
 Route::get('/apartment/{id}', 'ApartmentController@show')->name('show');
 
 Auth::routes();

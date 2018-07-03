@@ -14,65 +14,37 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('ApartmentsList', require('./components/ApartmentsList.vue'));
+Vue.component('AddApartmentModal', require('./components/AddApartmentModal.vue'));
+Vue.component('ApartmentDetailsModal', require('./components/ApartmentDetailsModal.vue'));
 
 const app = new Vue({
     el: '#app',
     data: {
-        list: [
-            {
-                number: 1,
-                floor: 1,
-                entrance: 1,
-                status: 0,
-                owners: [
-                    {
-                        name: 'lololololol',
-                        number: '0668539494'
-                    }
-                ]
-            },
-            {
-                number: 2,
-                floor: 1,
-                entrance: 1,
-                status: 1,
-                owners: [
-                    {
-                        name: 'lololololol',
-                        number: '0668539494'
-                    }
-                ]
-            },
-            {
-                number: 3,
-                floor: 1,
-                entrance: 1,
-                status: 2,
-                owners: [
-                    {
-                        name: 'lololololol',
-                        number: '0668539494'
-                    }
-                ]
-            },
-            {
-                number: 4,
-                floor: 1,
-                entrance: 1,
-                status: 3,
-                owners: [
-                    {
-                        name: 'lololololol',
-                        number: '0668539494'
-                    },
-                    {
-                        name: 'lololololol22',
-                        number: '0668539494222'
-                    }
-                ]
-            }
-        ]
+        list: null,
+        user: null,
+        selectedIndex: null,
+    },
+    methods: {
+        _loadList() {
+            axios.get('/apartment/list')
+                .then((response) => {
+                    this.list = response.data.list;
+                    this.user = response.data.user;
+                    console.log(this.user);
+                })
+                .catch((error) => {
+                    alert("Произошла ошибка! (Посмотрите в логи)")
+                    console.log(error);
+                });
+        },
+        showDetails(index) {
+            this.selectedIndex = index;
+        },
+    },
+    mounted() {
+        this._loadList();
     }
 });

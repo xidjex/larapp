@@ -10,8 +10,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="apartment in list" :class="{'table-success': apartment.status==3, 'table-primary': apartment.status==2, 'table-warning': apartment.status==1}">
-          <th scope="row">{{ apartment.number }}</th>
+        <tr v-for="(apartment, index) in list" :class="{'table-success': apartment.status==3, 'table-primary': apartment.status==2, 'table-warning': apartment.status==1}">
+          <th scope="row" @click="details(index)">{{ apartment.number }}</th>
           <td>{{ apartment.floor }}</td>
           <td>{{ apartment.entrance }}</td>
           <td>
@@ -49,6 +49,20 @@ export default {
         return {
 
         }
+    },
+    methods: {
+        details(apartment) {
+            this.$emit('details', apartment);
+        }
+        // del(id) {
+        //     axios.delete('/apartment/' + id)
+        //     .then((response) => {
+        //         console.log(response);
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
+        // }
     }
 }
 
