@@ -15,7 +15,10 @@
           <td>{{ apartment.floor }}</td>
           <td>{{ apartment.entrance }}</td>
           <td>
-              <div v-if="apartment.owners.length == 1">
+                <div v-if="apartment.owners.length == 0">
+                  Нет данных
+                </div>
+              <div v-else-if="apartment.owners.length == 1">
                   <span>{{ apartment.owners[0].name }}</span>
                   <a href="tel:apartment.owners[0].number ">{{ apartment.owners[0].number }}</a>
               </div>
@@ -42,9 +45,7 @@
 
 export default {
     name: 'ApartmentsList',
-    props: {
-        list: Array
-    },
+    props: ['list'],
     data: () => {
         return {
 
@@ -54,15 +55,6 @@ export default {
         details(apartment) {
             this.$emit('details', apartment);
         }
-        // del(id) {
-        //     axios.delete('/apartment/' + id)
-        //     .then((response) => {
-        //         console.log(response);
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        //     });
-        // }
     }
 }
 

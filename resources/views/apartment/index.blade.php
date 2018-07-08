@@ -169,4 +169,5 @@
 <apartments-list :list="list" @details='showDetails'></apartments-list>
 <add-apartment-modal @store="_loadList()"></add-apartment-modal>
 <apartment-details-modal v-if="selectedIndex != null" :index="selectedIndex" @close="selectedIndex = null" @update="_loadList()"></apartment-details-modal>
+
 @endsection

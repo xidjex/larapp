@@ -11,7 +11,7 @@
                 </div>
                 <div class="modal-body">
                     <dl class="row">
-
+                        
                         <dt class="col-sm-3">Этаж</dt>
                         <dd class="col-sm-9">{{ apartment.floor }}</dd>
 
@@ -23,25 +23,57 @@
                         <dd class="col-sm-9"> {{ apartment.kit }}</dd>
 
                         <dt class="col-sm-3">Cтатус</dt>
-                        <dd class="col-sm-9">{{ apartment.status }}
-                            <button type="button" class="btn btn-danger bmd-btn-icon">
+                        <dd class="col-sm-9">
+                            <span v-if="!status.edit">{{ status.names[apartment.status] }}</span>
+                            <button type="button" class="btn btn-success bmd-btn-icon" @click="status.edit = !status.edit">
                                 <i class="material-icons">edit</i>
                             </button>
+                            <div v-if="status.edit">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="0" v-model="status.value">
+                                    <span class="bmd-radio"></span>
+                                    {{ status.names[0] }}
+                                  </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1"  v-model="status.value">
+                                    <span class="bmd-radio"></span>
+                                    {{ status.names[1] }}
+                                  </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="2"  v-model="status.value">
+                                    <span class="bmd-radio"></span>
+                                    {{ status.names[2] }}
+                                  </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3"  v-model="status.value">
+                                    <span class="bmd-radio"></span>
+                                    {{ status.names[3] }}
+                                </label>
+                                <button type="button" class="btn btn-success bmd-btn-icon" @click="updateStatus(status.value)">
+                                <i class="material-icons">save</i>
+                            </button>
+                            </div>
                         </dd>
+                        
+                        <dt class="col-sm-3">Создан</dt>
+                        <dd class="col-sm-9">{{ apartment.created_at.split(' ', 1).pop() }}</dd>
 
                         <dt class="col-sm-3">Добавил</dt>
                         <dd class="col-sm-9">{{ apartment.user.name }}</dd>
                     </dl>
 
                     <h5 class="card-header">Владельцы</h5>
-                    <owners-editable-list v-if='apartment' v-model="apartment.owners" @add_owner="addOwner"></owners-editable-list>
+                    <owners-editable-list v-if='apartment' :value="apartment.owners" :show-controls="false" @add="addOwner" @remove="removeOwner"></owners-editable-list>
 
                     <h5 class="card-header">Заметки</h5>
                     <div class="bg-light">
                         <div class="notes-set" v-if="apartment.notes.length > 0">
                             <div class="alert alert-success" role="alert" v-for="note in apartment.notes">
                                 {{ note.note }}
-                                <strong style="float: right;">{{ note.user.name }}</strong>
+                                <button type="button" class="btn btn-danger bmd-btn-icon" v-if="note.user_id == $root.$data.user.id" @click="removeNote(note.id)">
+                                    <i class="material-icons">remove</i>
+                                </button>
+                                <strong class="float-right">{{ note.user.name }}</strong>
                             </div>
                         </div>
                         <div v-else class="alert alert-danger" role="alert">
@@ -59,7 +91,7 @@
                         <progress-bar :state="progress"></progress-bar>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" @click="remove">Удалить</button>
+                        <button type="button" class="btn btn-danger float-left" @click="remove">Удалить</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                     </div>
                 </div>
@@ -85,6 +117,11 @@
                     note: "",
                     user_id: null,
                     apartment_id: null,
+                },
+                status: {
+                    value: null,
+                    edit: false,
+                    names: ['Не смонт.', 'Не заверш.', 'Смонт.', 'Сдан']
                 }
             }
         },
@@ -94,7 +131,7 @@
         },
         computed: {
             apartment() {
-                return this.$root.$data.list[this.index];
+                return this.$root.list[this.index];
             }
         },
         methods: {
@@ -118,6 +155,19 @@
                         console.error(error.response);
                     })
             },
+            removeNote(id) {
+                this.progress = true;
+
+                axios.delete('/apartment/note/' + id)
+                .then((response) => {
+                    this.progress = false;
+
+                    this.$emit('update');
+                })
+                .catch((error) => {
+                    this.progress = false;
+                });
+            },
             addOwner(owner) {
                 owner.apartment_id = this.apartment.id;
 
@@ -135,6 +185,23 @@
                         console.error(error.response);
                     })
             },
+            removeOwner(index) {
+                const owner_id = this.apartment.owners[index].id;
+
+                this.progress = true;
+
+                axios.delete('/apartment/owner/' + owner_id)
+                .then((response) => {
+                    this.progress = false;
+
+                    this.$emit('update');
+                })
+                .catch((error) => {
+                    this.progress = false;
+
+                    console.error(error.request);
+                });
+            },
             remove() {
                 this.progress = true;
 
@@ -145,8 +212,22 @@
                     this.$emit('update');
 
                     $('#detailsModal').modal('hide');
+                })
+                .catch((error) => {
+                    this.progress = false;
 
-                    console.log(response);
+                    console.error(error);
+                });
+            },
+            updateStatus(status) {
+                this.progress = true;
+                
+                axios.patch('/apartment/status', {apartment_id: this.apartment.id, status: status})
+                .then((response) => {
+                    this.progress = false;
+                    
+                    $('#detailsModal').modal('hide');
+                    this.$emit('update');
                 })
                 .catch((error) => {
                     this.progress = false;

@@ -12,6 +12,7 @@ use App\Note;
 use App\Http\Requests\ApartmentStoreRequest;
 use App\Http\Requests\NoteStoreRequest;
 use App\Http\Requests\OwnerStoreRequest;
+use App\Http\Requests\NoteDeleteRequest;
 
 
 
@@ -116,6 +117,16 @@ class ApartmentController extends Controller
 
         $new_note->save();
     }
+    
+    public function deleteNote(NoteDeleteRequest $request, $id)
+    {
+        
+        if (isset($id) and (int) $id != 0) {
+            $note = Note::find($id);
+
+            $note->delete();
+        }
+    }
 
     public function storeOwner(OwnerStoreRequest $request)
     {
@@ -128,5 +139,25 @@ class ApartmentController extends Controller
 
         $apartment = Apartment::find($request->apartment_id);
         $apartment->owners()->attach($new_owner->id);
+    }
+
+    public function deleteOwner($id)
+    {
+        if (isset($id) and (int) $id != 0) {
+            $owner = Owner::find($id);
+
+            $owner->apartments()->detach();
+
+            $owner->delete();
+        }
+    }
+    
+    public function updateStatus(Request $request)
+    {
+        $apartment = Apartment::find($request->apartment_id);
+        
+        $apartment->status = $request->status;
+        
+        $apartment->save();
     }
 }

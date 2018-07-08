@@ -139,7 +139,13 @@
                     owners: []
                 };
             }
-        }
+        },
+        mounted() {
+                $('#exampleModalCenter').on('hidden.bs.modal', () => {
+                    this._cleanData();
+                    this.errors = {};
+                });
+            }
     }
 
 </script>

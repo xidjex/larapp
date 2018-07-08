@@ -26,7 +26,7 @@
         </div>
         <button type="button" class="btn btn-ou-primary" @click="edit = !edit">
             <span v-if="!edit">Редактировать</span>
-            <span v-else>Отмена</span>
+            <span v-else>Скрыть</span>
         </button>
     </div>
 
@@ -40,6 +40,10 @@
             value: {
                 type: Array,
                 default: () => []
+            },
+            showControls: {
+                type: Boolean,
+                default: () => true
             }
         },
         data: () => {
@@ -56,7 +60,7 @@
 
                     this.$emit('input', this.value);
 
-                    this.$emit('add_owner', {name: this.name, number: this.number});
+                    this.$emit('add', {name: this.name, number: this.number});
 
                     this.name = this.number = '';
                 } else {
@@ -64,10 +68,13 @@
                 }
             },
             remove(index) {
-                this.value.splice(index, 1);
+                this.$emit('remove', index);
 
-                this.$emit('input', this.value);
+                this.value.splice(index, 1);
             }
+        },
+        mounted() {
+            this.edit = this.showControls;
         }
     }
 
