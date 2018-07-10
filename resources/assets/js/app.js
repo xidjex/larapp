@@ -17,19 +17,19 @@ window.Vue = require('vue');
 Vue.component('ApartmentsList', require('./components/ApartmentsList.vue'));
 Vue.component('AddApartmentModal', require('./components/AddApartmentModal.vue'));
 Vue.component('ApartmentDetailsModal', require('./components/ApartmentDetailsModal.vue'));
+Vue.component('Search', require('./components/Search.vue'));
 
 const app = new Vue({
     el: '#app',
     data: {
         apartments: null,
-        search: null,
         user: null,
         selectedIndex: null,
-        inputSearch: null
+        search: null
     },
     methods: {
         _loadList() {
-            axios.get('/apartment/list')
+            axios.get('/apartment/list') 
                 .then((response) => {
                     this.apartments = response.data.list;
                     this.user = response.data.user;
@@ -39,28 +39,17 @@ const app = new Vue({
                     console.log(error);
                 });
         },
-        searchIn(target = null, value = 0) {
-         
-            this.search = _.filter(this.apartments, {'status': 0});
-        },
         showDetails(index) {
             this.selectedIndex = index;
         },
-        searchAll() {
-            var command = this.inputSearch.split(':', 2);
-            command[0] = _.lowerCase(_.trim(command[0]));
-            command[1] = _.toInteger(_.trim(command[1])) != 0 ? _.toInteger(_.trim(command[1])): _.toLowerCase(_.trim(command[1]));
-            
-            this.search =  _.zipObject([command[0]], [command[1]]);
+        searchError() {
+            alert('Ничего не найдено!');
         }
     },
     computed: {
       list() {
-          return this.sList || this.apartments;
+          return this.searched || this.apartments;
       },
-        sList() {
-            return _.filter(this.apartments, this.search);
-        }
     },
     mounted() {
         this._loadList();

@@ -20165,6 +20165,13 @@ h6 {
   }
 }
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #e3e2e1;
+}
+
 .dropdown-menu .dropdown-item {
   max-width: none !important;
 }
@@ -20179,5 +20186,18 @@ h6 {
 
 .show {
   display: block;
+}
+
+.panel {
+  width: 400px;
+  background-color: #fff;
+  text-align: center;
+  -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.panel-heading {
+  background-color: #e0e0e0;
 }
 

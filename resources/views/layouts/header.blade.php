@@ -11,22 +11,25 @@
         <a class="nav-link" href="#" @click="search = null">Все</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" @click="search = {'status': 3}">Сданы</a>
+        <a class="nav-link" href="#" @click="search = {target: 'status', text: 3}">Сданы</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" @click="search = {'status': 2}">Смонтированые</a>
+        <a class="nav-link" href="#" @click="search = {target: 'status', text: 2}">Смонтированые</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" @click="search = {'status': 1}">Не завершенные</a>
+        <a class="nav-link" href="#" @click="search = {target: 'status', text: 1}">Не завершенные</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" @click="search = {'status': 0}">Не смонтированые</a>
+        <a class="nav-link" href="#" @click="search = {target: 'status', text: 0}">Не смонтированые</a>
       </li>
     </ul>
+      <search :list="apartments" v-model="search"></search>
+<!--
     <form class="form-inline my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Найти.." aria-label="Search" v-model="inputSearch">
       <button class="btn btn-success my-2 my-sm-0" type="submit" @click.prevent="searchAll()">Поиск</button>
     </form>
+-->
     <button type="button" class="btn btn-primary my-2 my-lg-0" onclick="event.preventDefault();
              document.getElementById('logout-form').submit();">Выйти</button>
   </div>

@@ -1,6 +1,6 @@
 <template>
 
-    <table class="table table-bordered table-hover" v-if="list">
+    <table class="table table-bordered table-hover" v-if="apartments">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
@@ -10,8 +10,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(apartment, index) in list" :class="{'table-success': apartment.status==3, 'table-primary': apartment.status==2, 'table-warning': apartment.status==1}">
-          <th scope="row" @click="details(index)">{{ apartment.number }}</th>
+        <tr v-for="(apartment, index) in apartments" :class="{'table-success': apartment.status==3, 'table-primary': apartment.status==2, 'table-warning': apartment.status==1}">
+          <th scope="row" @click="details(apartment)">{{ apartment.number }}</th>
           <td>{{ apartment.floor }}</td>
           <td>{{ apartment.entrance }}</td>
           <td>
@@ -45,15 +45,57 @@
 
 export default {
     name: 'ApartmentsList',
-    props: ['list'],
-    data: () => {
-        return {
-
+    props: {
+        list: Array,
+        filters: {
+            type: Object,
+            default: null
         }
     },
     methods: {
         details(apartment) {
-            this.$emit('details', apartment);
+            this.$emit('details', this.list.indexOf(apartment));
+        },
+        filter() {
+            if (this.filters == null || this.filters.target == null || this.filters.text == null) return null;
+            
+            const target = this.filters.target.toLowerCase(_.trim(this.filters.target));
+            const text = _.trim(this.filters.text).toLowerCase();
+
+            const command = (target.indexOf('>') != -1 ) ? target.split('>') : target;
+
+            var result = null;
+            
+            if(_.isArray(command)) {
+                    result = _.filter(this.list, (item) => {
+                       return _.filter(item[command[0]], (sub_item) => {
+                           return sub_item[command[1]].toLowerCase().indexOf(text) < 0 ? false : true;
+                       }).length > 0;
+                    });
+                } else {                    
+                    result = _.filter(this.list, (item) => {
+                        if (typeof item[command] === 'string') {
+                            return (item[command].toLowerCase().indexOf(text) != -1);
+                        } else if (typeof item[command] === 'number') {
+                            return item[command] == _.toInteger(text);
+                        } else return false;  
+                    });
+                }
+            
+            if (result.length > 0) {
+                return result;
+            } else {
+                this.$emit('not_found');
+                return null;
+            }
+            //return (result.length > 0) ? result : null;
+        }
+    },
+    computed: {
+        apartments() {
+            const filtered_list = this.filter();
+            
+            return filtered_list ? filtered_list : this.list; 
         }
     }
 }

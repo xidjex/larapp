@@ -22,4 +22,12 @@ class Apartment extends Model
     {
         return $this->belongsToMany('App\Owner');
     }
+    public function getMountAtAttribute($value)
+    {
+        return explode(' ', $value)[0];
+    }
+    public function getCreatedAtAttribute($value)
+    {
+        return explode(' ', $value)[0];
+    }
 }

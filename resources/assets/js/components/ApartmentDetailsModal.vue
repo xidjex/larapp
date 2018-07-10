@@ -56,7 +56,10 @@
                         </dd>
                         
                         <dt class="col-sm-3">Создан</dt>
-                        <dd class="col-sm-9">{{ apartment.created_at.split(' ', 1).pop() }}</dd>
+                        <dd class="col-sm-9">{{ apartment.created_at }}</dd>
+                        
+                        <dt class="col-sm-3" v-if="apartment.mount_at">Смонтирован</dt>
+                        <dd class="col-sm-9" v-if="apartment.mount_at">{{ apartment.mount_at }}</dd>
 
                         <dt class="col-sm-3">Добавил</dt>
                         <dd class="col-sm-9">{{ apartment.user.name }}</dd>

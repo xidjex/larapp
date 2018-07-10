@@ -14,6 +14,8 @@ use App\Http\Requests\NoteStoreRequest;
 use App\Http\Requests\OwnerStoreRequest;
 use App\Http\Requests\NoteDeleteRequest;
 
+use Carbon\Carbon;
+
 
 
 class ApartmentController extends Controller
@@ -157,6 +159,12 @@ class ApartmentController extends Controller
         $apartment = Apartment::find($request->apartment_id);
         
         $apartment->status = $request->status;
+        
+        if ($request->status == 2) {
+            $apartment->mount_at = Carbon::now();
+        } else {
+            $apartment->mount_at = null;
+        }
         
         $apartment->save();
     }
