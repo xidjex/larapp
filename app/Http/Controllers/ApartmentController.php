@@ -160,10 +160,11 @@ class ApartmentController extends Controller
         
         $apartment->status = $request->status;
         
-        if ($request->status == 2) {
-            $apartment->mount_at = Carbon::now();
-        } else {
+        if ($request->status < 2) {
             $apartment->mount_at = null;
+        }
+        else if ($request->status == 2) {
+            $apartment->mount_at = Carbon::now();
         }
         
         $apartment->save();

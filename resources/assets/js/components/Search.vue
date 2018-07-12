@@ -41,7 +41,7 @@
             search(target ) {
                 if (target == null) this.input = null;
                 
-                this.$emit('input', {target: target, text: this.input});
+                this.$emit('input', {target: target, query: this.input});
             }
         },
     }

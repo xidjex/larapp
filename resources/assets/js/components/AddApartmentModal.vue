@@ -1,89 +1,97 @@
 <template>
-<div>
-    <button type="button" class="btn btn-primary bmd-btn-fab position-fixed" data-toggle="modal" data-target="#exampleModalCenter" style="right: 20px; bottom: 20px;">
-      <i class="material-icons">add</i>
-    </button>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Добавление объекта</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <form action="/" type="POST" class="needs-validation">
-                  <div class="input-group input-group-sm mb-3">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text">Квартира</span>
-                      </div>
-                      <input required type="number" v-model="apartment.number" class="form-control" aria-label="# Квартиры" aria-describedby="inputGroup-sizing-sm">
-                      <div class="invalid-feedback show" v-for="error in errors.number">
-                          {{ error }}
-                      </div>
-                  </div>
+    <div>  
+        <!-- Floating button add new apartment -->
+        <button type="button" class="btn btn-primary bmd-btn-fab position-fixed" data-toggle="modal" data-target="#addApartmentModal" style="right: 20px; bottom: 20px;">
+          <i class="material-icons">add</i>
+        </button>
+        <!-- Floating button add new apartment -->
 
-                  <div class="input-group input-group-sm mb-3">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text">Этаж</span>
-                      </div>
-                      <input required type="number" v-model="apartment.floor" class="form-control" aria-label="# Квартиры" aria-describedby="inputGroup-sizing-sm">
-                      <div class="invalid-feedback show" v-for="error in errors.floor">
-                          {{ error }}
-                      </div>
-                  </div>
+        <!-- Modal form adding new apartment -->
+        <div class="modal fade" id="addApartmentModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Добавление объекта</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/" type="POST" class="needs-validation">
+                            <div class="input-group input-group-sm mb-3 row">
+                                <div class="col-sm-3 col-4">
+                                    <span class="input-group-text">Квартира</span>
+                                </div>
+                                <input required type="number" v-model="apartment.number" class="form-control col-sm-9 col-8" aria-label="# Квартиры">
+                                <div class="invalid-feedback col-sm-12 show" v-for="error in errors.number">
+                                    {{ error }}
+                                </div>
+                            </div>
 
-                  <div class="input-group input-group-sm mb-3">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text">Подъезд</span>
-                      </div>
-                      <input required type="number" v-model="apartment.entrance" class="form-control" aria-label="# Квартиры" aria-describedby="inputGroup-sizing-sm">
-                      <div class="invalid-feedback show" v-for="error in errors.entrance">
-                          {{ error }}
-                      </div>
-                  </div>
+                            <div class="input-group input-group-sm mb-3 row">
+                                <div class="col-sm-3 col-4">
+                                    <span class="input-group-text">Этаж</span>
+                                </div>
+                                <input required type="number" v-model="apartment.floor" class="form-control col-sm-9 col-8" aria-label="Этаж">
+                                <div class="invalid-feedback col-sm-12 show" v-for="error in errors.floor">
+                                    {{ error }}
+                                </div>
+                            </div>
 
-                  <span class="input-group-text">Владельцы</span>
+                            <div class="input-group input-group-sm mb-3 row">
+                                <div class="col-sm-3 col-4">
+                                    <span class="input-group-text">Подъезд</span>
+                                </div>
+                                <input required type="number" v-model="apartment.entrance" class="form-control col-sm-9 col-8" aria-label="Подъезд">
+                                <div class="invalid-feedback col-sm-12 show" v-for="error in errors.entrance">
+                                    {{ error }}
+                                </div>
+                            </div>
 
-                  <owners-editable-list v-model="apartment.owners"></owners-editable-list>
-                  <div class="invalid-feedback show" v-for="error in errors.owners">
-                      {{ error }}
-                  </div>
+                            <span class="input-group-text" aria-label="Владельцы">Владельцы</span>
 
-                  <div class="input-group input-group-sm mb-3">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text">Комплект</span>
-                      </div>
-                      <input type="text" v-model="apartment.kit" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-                      <div class="invalid-feedback show" v-for="error in errors.kit">
-                          {{ error }}
-                      </div>
-                  </div>
-                  <div class="input-group input-group-sm mb-3">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text">Заметка</span>
-                      </div>
-                      <input type="text" v-model="apartment.note" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                  </div>
-              </form>
-              <progress-bar :state="progress"></progress-bar>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary" @click="save()">Сохранить</button>
-          </div>
+                            <owners-editable-list v-model="apartment.owners"></owners-editable-list>
+                            <div class="invalid-feedback show" v-for="error in errors.owners">
+                                {{ error }}
+                            </div>
+
+                            <div class="input-group input-group-sm mb-3 row">
+                                <div class="col-sm-3 col-4">
+                                    <span class="input-group-text" aria-label="Комплект">Комплект</span>
+                                </div>
+                                <input type="text" v-model="apartment.kit" class="form-control col-sm-9 col-8" required>
+                                <div class="invalid-feedback col-sm-12 show" v-for="error in errors.kit">
+                                    {{ error }}
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm mb-3 row">
+                                <div class="col-sm-3 col-4">
+                                    <span class="input-group-text" aria-label="Заметка">Заметка</span>
+                                </div>
+                                <input type="text" v-model="apartment.note" class="form-control col-sm-9 col-8">
+                            </div>
+                        </form>
+                        
+                        <progress-bar :state="progress"></progress-bar> <!--Индикатор загрузки ./ProgressBar.vue-->
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" @click="save()">Сохранить</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        <!-- Modal form adding new apartment -->
     </div>
-</div>
+
 </template>
 
 <script>
 
-    import OwnersEditableList from './OwnersEditableList.vue';
     import ProgressBar from './ProgressBar.vue';
+    import OwnersEditableList from './OwnersEditableList.vue';
 
     export default {
         name: 'AddApartmentModal',
@@ -104,7 +112,7 @@
             'progress-bar': ProgressBar
         },
         methods: {
-            save() {
+            save() { //Save request
                 this.progress = true;
                 this.errors = {};
 
@@ -117,7 +125,7 @@
 
                         this.progress = false;
 
-                        $('#exampleModalCenter').modal('hide');
+                        $('#addApartmentModal').modal('hide');
                     })
                     .catch((error) => {
                         this.progress = false;
@@ -141,7 +149,7 @@
             }
         },
         mounted() {
-                $('#exampleModalCenter').on('hidden.bs.modal', () => {
+                $('#addApartmentModal').on('hidden.bs.modal', () => { // Clean data when modal closing
                     this._cleanData();
                     this.errors = {};
                 });
@@ -149,7 +157,3 @@
     }
 
 </script>
-
-<style>
-
-</style>
