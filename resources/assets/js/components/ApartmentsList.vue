@@ -27,7 +27,7 @@
                     </div>
                     <div v-else-if="apartment.owners.length == 1">
                         <span>{{ apartment.owners[0].name }}</span>
-                        <a href="tel:apartment.owners[0].number ">{{ apartment.owners[0].number }}</a>
+                        <a :href="'tel:' + apartment.owners[0].number ">{{ apartment.owners[0].number }}</a>
                     </div>
                     <div class="dropdown" v-else>
                         <a class="dropdown-toggle" id="showOwnersMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Показать</a>
@@ -35,7 +35,7 @@
                             <div class="dropdown-item" v-for="owner in apartment.owners">
                                 <div class="owner-item">
                                     <span>{{ owner.name }}</span>
-                                    <a href="tel:owner.number">{{ owner.number }}</a>
+                                    <a :href="'tel:' + owner.number">{{ owner.number }}</a>
                                 </div>
                             </div>
                         </div>

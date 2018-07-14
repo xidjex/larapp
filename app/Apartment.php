@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apartment extends Model
 {
+    public $fillable = ['number', 'floor', 'entrance', 'kit', 'status', 'user_id'];
     public $timestamps = true;
 
     public function notes()

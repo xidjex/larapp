@@ -11,15 +11,17 @@
 |
 */
 
-Route::get('/', 'ApartmentController@index')->name('index');
-Route::post('/apartment', 'ApartmentController@store');
-Route::get('/apartment/list/', 'ApartmentController@list')->name('list');
-Route::post('/apartment/note', 'ApartmentController@storeNote');
-Route::delete('/apartment/note/{id}', 'ApartmentController@deleteNote');
-Route::post('/apartment/owner', 'ApartmentController@storeOwner');
-Route::delete('/apartment/owner/{id}', 'ApartmentController@deleteOwner');
-Route::delete('/apartment/{id}', 'ApartmentController@delete');
-Route::patch('/apartment/status/', 'ApartmentController@updateStatus');
-Route::get('/apartment/{id}', 'ApartmentController@show')->name('show');
+Route::get('/', 'ApartmentController@index');
+Route::post('/apartment', 'ApartmentController@store')->middleware('check.role');
+Route::get('/apartment/list/', 'ApartmentController@list');
+Route::patch('/apartment/status/', 'ApartmentController@updateStatus')->middleware('check.role');
+Route::delete('/apartment/{id}', 'ApartmentController@destroy')->middleware('check.role');
+
+
+Route::post('/note', 'NoteController@store')->middleware('check.role');
+Route::delete('/note/{id}', 'NoteController@destroy')->middleware('check.role');
+
+Route::post('/owner', 'OwnerController@store')->middleware('check.role');
+Route::delete('/owner/{id}', 'OwnerController@destroy')->middleware('check.role');
 
 Auth::routes();

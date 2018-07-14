@@ -13978,56 +13978,9 @@ module.exports = Cancel;
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(52)
+var __vue_script__ = __webpack_require__(47)
 /* template */
-var __vue_template__ = __webpack_require__(53)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\OwnersEditableList.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-cb6337ce", Component.options)
-  } else {
-    hotAPI.reload("data-v-cb6337ce", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(54)
-/* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(48)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -14066,11 +14019,58 @@ module.exports = Component.exports
 
 
 /***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(49)
+/* template */
+var __vue_template__ = __webpack_require__(50)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\OwnersEditableList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-cb6337ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-cb6337ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(63);
+module.exports = __webpack_require__(58);
 
 
 /***/ }),
@@ -14095,8 +14095,8 @@ window.Vue = __webpack_require__(39);
 
 Vue.component('ApartmentsList', __webpack_require__(42));
 Vue.component('AddApartmentModal', __webpack_require__(45));
-Vue.component('ApartmentDetailsModal', __webpack_require__(57));
-Vue.component('Search', __webpack_require__(60));
+Vue.component('ApartmentDetailsModal', __webpack_require__(52));
+Vue.component('Search', __webpack_require__(55));
 
 var app = new Vue({
     el: '#app',
@@ -50233,7 +50233,9 @@ var render = function() {
                           _c(
                             "a",
                             {
-                              attrs: { href: "tel:apartment.owners[0].number " }
+                              attrs: {
+                                href: "tel:" + apartment.owners[0].number
+                              }
                             },
                             [_vm._v(_vm._s(apartment.owners[0].number))]
                           )
@@ -50269,7 +50271,9 @@ var render = function() {
                                     _vm._v(" "),
                                     _c(
                                       "a",
-                                      { attrs: { href: "tel:owner.number" } },
+                                      {
+                                        attrs: { href: "tel:" + owner.number }
+                                      },
                                       [_vm._v(_vm._s(owner.number))]
                                     )
                                   ])
@@ -50320,9 +50324,9 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(51)
+var __vue_script__ = __webpack_require__(46)
 /* template */
-var __vue_template__ = __webpack_require__(56)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -50361,19 +50365,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar_vue__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OwnersEditableList_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OwnersEditableList_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OwnersEditableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__OwnersEditableList_vue__);
 //
 //
@@ -50540,7 +50539,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 52 */
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'ProgressBar',
+    props: {
+        state: Boolean
+    }
+});
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.state
+    ? _c("div", { staticClass: "progress", staticStyle: { height: "20px" } }, [
+        _c("div", {
+          staticClass:
+            "progress-bar progress-bar-striped progress-bar-animated",
+          staticStyle: { width: "100%" },
+          attrs: { role: "progressbar" }
+        })
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f7591c02", module.exports)
+  }
+}
+
+/***/ }),
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50630,7 +50679,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 53 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50798,57 +50847,7 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'ProgressBar',
-    props: {
-        state: Boolean
-    }
-});
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.state
-    ? _c("div", { staticClass: "progress", staticStyle: { height: "20px" } }, [
-        _c("div", {
-          staticClass:
-            "progress-bar progress-bar-striped progress-bar-animated",
-          staticStyle: { width: "100%" },
-          attrs: { role: "progressbar" }
-        })
-      ])
-    : _vm._e()
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-f7591c02", module.exports)
-  }
-}
-
-/***/ }),
-/* 56 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51303,15 +51302,15 @@ if (false) {
 }
 
 /***/ }),
-/* 57 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(58)
+var __vue_script__ = __webpack_require__(53)
 /* template */
-var __vue_template__ = __webpack_require__(59)
+var __vue_template__ = __webpack_require__(54)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51350,14 +51349,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 58 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar_vue__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OwnersEditableList_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OwnersEditableList_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OwnersEditableList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__OwnersEditableList_vue__);
 //
 //
@@ -51481,7 +51480,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 user_id: null,
                 apartment_id: null
             },
-            status: { //data for changing status of apartment
+            status: { //data for change status of apartment
                 value: null,
                 edit: false,
                 names: ['Не смонт.', 'Не заверш.', 'Смонт.', 'Сдан']
@@ -51508,7 +51507,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.progress = true;
 
-            axios.post('/apartment/note', this.note).then(function (response) {
+            axios.post('/note', this.note).then(function (response) {
                 _this.progress = false;
 
                 _this.note.note = '';
@@ -51525,7 +51524,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.progress = true;
 
-            axios.delete('/apartment/note/' + id).then(function (response) {
+            axios.delete('/note/' + id).then(function (response) {
                 _this2.progress = false;
 
                 _this2.$emit('update');
@@ -51540,7 +51539,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.progress = true;
 
-            axios.post('/apartment/owner', owner).then(function (response) {
+            axios.post('/owner', owner).then(function (response) {
                 _this3.progress = false;
 
                 _this3.$emit('update');
@@ -51557,7 +51556,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.progress = true;
 
-            axios.delete('/apartment/owner/' + owner_id).then(function (response) {
+            axios.delete('/owner/' + owner_id).then(function (response) {
                 _this4.progress = false;
 
                 _this4.$emit('update');
@@ -51571,6 +51570,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this5 = this;
 
             // remove apartment
+
+            if (!confirm('Удалить объект?')) return;
+
             this.progress = true;
 
             axios.delete('/apartment/' + this.apartment.id).then(function (response) {
@@ -51614,7 +51616,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 59 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51654,29 +51656,29 @@ var render = function() {
             { staticClass: "modal-body" },
             [
               _c("dl", { staticClass: "row" }, [
-                _c("dt", { staticClass: "col-sm-3 col-3" }, [_vm._v("Этаж")]),
+                _c("dt", { staticClass: "col-sm-3 col-4" }, [_vm._v("Этаж")]),
                 _vm._v(" "),
-                _c("dd", { staticClass: "col-sm-9 col-9" }, [
+                _c("dd", { staticClass: "col-sm-9 col-8" }, [
                   _vm._v(_vm._s(_vm.apartment.floor))
                 ]),
                 _vm._v(" "),
-                _c("dt", { staticClass: "col-sm-3 col-3" }, [
+                _c("dt", { staticClass: "col-sm-3 col-4" }, [
                   _vm._v("Подьезд")
                 ]),
                 _vm._v(" "),
-                _c("dd", { staticClass: "col-sm-9 col-9" }, [
+                _c("dd", { staticClass: "col-sm-9 col-8" }, [
                   _vm._v(_vm._s(_vm.apartment.entrance))
                 ]),
                 _vm._v(" "),
-                _c("dt", { staticClass: "col-sm-3 col-3" }, [_vm._v("Набор")]),
+                _c("dt", { staticClass: "col-sm-3 col-4" }, [_vm._v("Набор")]),
                 _vm._v(" "),
-                _c("dd", { staticClass: "col-sm-9 col-9" }, [
+                _c("dd", { staticClass: "col-sm-9 col-8" }, [
                   _vm._v(" " + _vm._s(_vm.apartment.kit))
                 ]),
                 _vm._v(" "),
-                _c("dt", { staticClass: "col-sm-3 col-3" }, [_vm._v("Cтатус")]),
+                _c("dt", { staticClass: "col-sm-3 col-4" }, [_vm._v("Cтатус")]),
                 _vm._v(" "),
-                _c("dd", { staticClass: "col-sm-9 col-9" }, [
+                _c("dd", { staticClass: "col-sm-9 col-8" }, [
                   !_vm.status.edit
                     ? _c("span", [
                         _vm._v(_vm._s(_vm.status.names[_vm.apartment.status]))
@@ -51840,29 +51842,29 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c("dt", { staticClass: "col-sm-3 col-3" }, [_vm._v("Создан")]),
+                _c("dt", { staticClass: "col-sm-3 col-4" }, [_vm._v("Создан")]),
                 _vm._v(" "),
-                _c("dd", { staticClass: "col-sm-9 col-9" }, [
+                _c("dd", { staticClass: "col-sm-9 col-8" }, [
                   _vm._v(_vm._s(_vm.apartment.created_at))
                 ]),
                 _vm._v(" "),
                 _vm.apartment.mount_at
-                  ? _c("dt", { staticClass: "col-sm-3 col-3" }, [
+                  ? _c("dt", { staticClass: "col-sm-3 col-4" }, [
                       _vm._v("Смонтирован")
                     ])
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.apartment.mount_at
-                  ? _c("dd", { staticClass: "col-sm-9 col-9" }, [
+                  ? _c("dd", { staticClass: "col-sm-9 col-8" }, [
                       _vm._v(_vm._s(_vm.apartment.mount_at))
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("dt", { staticClass: "col-sm-3 col-3" }, [
+                _c("dt", { staticClass: "col-sm-3 col-4" }, [
                   _vm._v("Добавил")
                 ]),
                 _vm._v(" "),
-                _c("dd", { staticClass: "col-sm-9 col-9" }, [
+                _c("dd", { staticClass: "col-sm-9 col-8" }, [
                   _vm._v(_vm._s(_vm.apartment.user.name))
                 ])
               ]),
@@ -52059,15 +52061,15 @@ if (false) {
 }
 
 /***/ }),
-/* 60 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(61)
+var __vue_script__ = __webpack_require__(56)
 /* template */
-var __vue_template__ = __webpack_require__(62)
+var __vue_template__ = __webpack_require__(57)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52106,7 +52108,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 61 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52160,7 +52162,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 62 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52207,7 +52209,7 @@ var render = function() {
               "aria-expanded": "false"
             }
           },
-          [_vm._v("Найти")]
+          [_vm._v("Поиск")]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "dropdown-menu" }, [
@@ -52373,7 +52375,7 @@ if (false) {
 }
 
 /***/ }),
-/* 63 */
+/* 58 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

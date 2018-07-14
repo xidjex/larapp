@@ -25,6 +25,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('delete-apartment', function ($user, $apartment) {
+            return $user->role > 1 ? true : false;
+        });
+        
+        Gate::define('store-apartment', function ($user) {
+            return $user->role > 1 ? true : false;
+        });
+        
+        Gate::define('deleteNote-apartment', function ($user, $apartment) {
+            return $user->id == $note->user_id and $user->role > 1 ? true : false;
+        });
     }
 }

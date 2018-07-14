@@ -3,7 +3,7 @@
         <div class="input-group">
             <input type="text" class="form-control" aria-label="Поиск" placeholder="Введите запрос" v-model="input">
             <div class="input-group-append">
-                <button class="btn btn-outline-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Найти</button>
+                <button class="btn btn-outline-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Поиск</button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#" @click="search('owners>name')">Имя</a>
                     <a class="dropdown-item" href="#" @click="search('owners>number')">Телефон</a>

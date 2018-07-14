@@ -12,17 +12,17 @@
                 <div class="modal-body">
                     <dl class="row">
                         
-                        <dt class="col-sm-3 col-3">Этаж</dt>
-                        <dd class="col-sm-9 col-9">{{ apartment.floor }}</dd>
+                        <dt class="col-sm-3 col-4">Этаж</dt>
+                        <dd class="col-sm-9 col-8">{{ apartment.floor }}</dd>
 
-                        <dt class="col-sm-3 col-3">Подьезд</dt>
-                        <dd class="col-sm-9 col-9">{{ apartment.entrance }}</dd>
+                        <dt class="col-sm-3 col-4">Подьезд</dt>
+                        <dd class="col-sm-9 col-8">{{ apartment.entrance }}</dd>
 
-                        <dt class="col-sm-3 col-3">Набор</dt>
-                        <dd class="col-sm-9 col-9"> {{ apartment.kit }}</dd>
+                        <dt class="col-sm-3 col-4">Набор</dt>
+                        <dd class="col-sm-9 col-8"> {{ apartment.kit }}</dd>
 
-                        <dt class="col-sm-3 col-3">Cтатус</dt>
-                        <dd class="col-sm-9 col-9">
+                        <dt class="col-sm-3 col-4">Cтатус</dt>
+                        <dd class="col-sm-9 col-8">
                             <span v-if="!status.edit">{{ status.names[apartment.status] }}</span>
                             <button type="button" class="btn btn-success bmd-btn-icon" @click="status.edit = !status.edit">
                                 <i class="material-icons">edit</i>
@@ -54,14 +54,14 @@
                             </div>
                         </dd>
                         
-                        <dt class="col-sm-3 col-3">Создан</dt>
-                        <dd class="col-sm-9 col-9">{{ apartment.created_at }}</dd>
+                        <dt class="col-sm-3 col-4">Создан</dt>
+                        <dd class="col-sm-9 col-8">{{ apartment.created_at }}</dd>
                         
-                        <dt class="col-sm-3 col-3" v-if="apartment.mount_at">Смонтирован</dt>
-                        <dd class="col-sm-9 col-9" v-if="apartment.mount_at">{{ apartment.mount_at }}</dd>
+                        <dt class="col-sm-3 col-4" v-if="apartment.mount_at">Смонтирован</dt>
+                        <dd class="col-sm-9 col-8" v-if="apartment.mount_at">{{ apartment.mount_at }}</dd>
 
-                        <dt class="col-sm-3 col-3">Добавил</dt>
-                        <dd class="col-sm-9 col-9">{{ apartment.user.name }}</dd>
+                        <dt class="col-sm-3 col-4">Добавил</dt>
+                        <dd class="col-sm-9 col-8">{{ apartment.user.name }}</dd>
                     </dl>
 
                     <h5 class="card-header">Владельцы</h5>
@@ -120,7 +120,7 @@
                     user_id: null,
                     apartment_id: null,
                 },
-                status: { //data for changing status of apartment
+                status: { //data for change status of apartment
                     value: null,
                     edit: false,
                     names: ['Не смонт.', 'Не заверш.', 'Смонт.', 'Сдан']
@@ -144,7 +144,7 @@
 
                 this.progress = true;
 
-                axios.post('/apartment/note', this.note)
+                axios.post('/note', this.note)
                     .then((response) => {
                         this.progress = false;
 
@@ -161,7 +161,7 @@
             removeNote(id) {
                 this.progress = true;
 
-                axios.delete('/apartment/note/' + id)
+                axios.delete('/note/' + id)
                 .then((response) => {
                     this.progress = false;
 
@@ -176,7 +176,7 @@
 
                 this.progress = true;
 
-                axios.post('/apartment/owner', owner)
+                axios.post('/owner', owner)
                     .then((response) => {
                         this.progress = false;
 
@@ -193,7 +193,7 @@
 
                 this.progress = true;
 
-                axios.delete('/apartment/owner/' + owner_id)
+                axios.delete('/owner/' + owner_id)
                 .then((response) => {
                     this.progress = false;
 
@@ -206,6 +206,9 @@
                 });
             },
             remove() { // remove apartment
+                
+                if(!confirm('Удалить объект?')) return;
+                
                 this.progress = true;
 
                 axios.delete('/apartment/' + this.apartment.id)
