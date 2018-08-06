@@ -35,10 +35,13 @@ class ApartmentController extends Controller
         return view('apartment.index');
     }
 
-    public function list()
-    {
+    public function list() // JSON response full database apartments
+    {   
+        $relations = ['notes.user', 'user'];
+        if(Auth::user()->role > 2) $relations[] = 'owners';
+        
         $data = [
-            'list' => Apartment::with(['owners', 'notes.user', 'user'])->get()->toArray(),
+            'list' => Apartment::with($relations)->get()->toArray(),
             'user' => Auth::user()
         ];
 

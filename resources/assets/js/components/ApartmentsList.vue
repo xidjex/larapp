@@ -22,7 +22,7 @@
                 <td>{{ apartment.floor }}</td>
                 <td>{{ apartment.entrance }}</td>
                 <td>
-                    <div v-if="apartment.owners.length == 0">
+                    <div v-if="!apartment.owners || apartment.owners.length == 0">
                         Нет данных
                     </div>
                     <div v-else-if="apartment.owners.length == 1">

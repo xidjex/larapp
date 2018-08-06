@@ -6,7 +6,7 @@
 
     @include('layouts.header')
 
-
+    <progress-bar  :state="progress"></progress-bar>
     <apartments-list 
         :list="list"  
         :filters="search" 

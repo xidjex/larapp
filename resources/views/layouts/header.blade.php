@@ -31,7 +31,7 @@
     </form>
 -->
     <button type="button" class="btn btn-primary my-2 my-lg-0" onclick="event.preventDefault();
-             document.getElementById('logout-form').submit();">Выйти</button>
+             document.getElementById('logout-form').submit();"> @{{ user.name }}, Выйти</button>
   </div>
   <!-- Logout form -->
   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

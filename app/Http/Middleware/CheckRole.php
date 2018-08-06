@@ -17,7 +17,7 @@ class CheckRole
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($request->user()->role < 2) {
+        if ($request->user()->role < 3) {
             return response()->json('Access Error!', 403);
         } 
 
