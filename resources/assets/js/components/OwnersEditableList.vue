@@ -4,7 +4,7 @@
             <li class="list-group-item" v-for="(owner, index) in value">
                 <div class="owner-item">
                     <span style="line-height: 35px;">{{ owner.name }}</span>
-                    <a href="tel:+380668536081" style="line-height: 35px;">{{ owner.number }}</a>
+                    <a href="tel:+38" style="line-height: 35px;">{{ owner.number }}</a>
                     <button type="button" class="btn btn-danger bmd-btn-icon" v-if="edit">
                         <i class="material-icons" @click="remove(index)">remove</i>
                     </button>
